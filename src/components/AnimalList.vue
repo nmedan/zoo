@@ -10,8 +10,8 @@
                  <tr v-for="(animal, key) in animals" :key="key">                      
                       <td>{{animal.type}}</td>                     
                       <td>{{animal.name}}</td>
-                      <td v-if="animal.birth === ''">Nepoznato</td>
-                      <td v-else>{{animal.birth}}</td>   
+                      <td>{{animal.birth? animal.birth : "Nepoznato"}}</td>
+                      <td><button type="submit" @click="removeAnimal(animal)">Remove</button></td>
                  </tr>
             </tbody>
         </table>
@@ -32,6 +32,14 @@ export default {
           ]
           
       };
-    }
+    },
+    methods: {
+        
+              removeAnimal(animal) {
+                  let indexOfAnimalToRemove = this.animals.indexOf(animal);
+                  this.animals.splice(indexOfAnimalToRemove, 1);
+              }
+     }
+   
 }
 </script>
