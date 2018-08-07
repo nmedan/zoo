@@ -1,6 +1,6 @@
 <template>
     <div>
-        <form v-on:submit.prevent="onSubmit">
+        <form v-on:submit.prevent>
             <label>Type: </label>
             <input v-model="newAnimal.type" type="text" placeholder="Type"><br>
             <label>Name: </label>
@@ -15,6 +15,7 @@
             </select><br>
             <button type="submit" @click="addAnimal">Add animal</button>
         </form>
+        <h2>Animals</h2>
         <table>
             <thead>
                 <th>Type</th>
@@ -30,6 +31,19 @@
                       <td>{{animal.birth? animal.birth : "Nepoznato"}}</td>
                       <td><button type="submit" @click="removeAnimal(animal)">Remove</button></td>
                       <td><button type="submit" @click="moveToTop(animal)">Move to top</button></td>
+                 </tr>
+            </tbody>
+        </table>
+        <h2>Sectors</h2>
+        <table>
+            <thead>
+                <th>Name </th>
+
+            </thead>
+            <tbody>
+                 <tr v-for="(sector, key) in sectors" :key="key">                      
+                      <td>{{sector.name}}</td>                     
+                      <td><button type="submit" @click="showAnimals(sector)">Show animals</button></td>
                  </tr>
             </tbody>
         </table>
@@ -77,6 +91,17 @@ export default {
                   let indexOfAnimalToRemove = this.animals.indexOf(animal);     
                   this.animals.splice(indexOfAnimalToRemove, 1);
                   this.animals.unshift(animal);           
+              },
+
+              showAnimals(sector) {
+                  var i;
+                  var animalsOfSector = [];
+                  for(i=0; i<this.animals.length; i++) {
+                      if (sector.name === this.animals[i].sector.name) {
+                        animalsOfSector.push(this.animals[i].type + " " + this.animals[i].name);
+                      }
+                  }
+                  alert(animalsOfSector.join('\n'));
               }
      }
    
