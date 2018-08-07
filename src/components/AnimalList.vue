@@ -12,6 +12,7 @@
                       <td>{{animal.name}}</td>
                       <td>{{animal.birth? animal.birth : "Nepoznato"}}</td>
                       <td><button type="submit" @click="removeAnimal(animal)">Remove</button></td>
+                      <td><button type="submit" @click="moveToTop(animal)">Move to top</button></td>
                  </tr>
             </tbody>
         </table>
@@ -38,6 +39,12 @@ export default {
               removeAnimal(animal) {
                   let indexOfAnimalToRemove = this.animals.indexOf(animal);
                   this.animals.splice(indexOfAnimalToRemove, 1);
+              },
+
+              moveToTop(animal) {
+                  let indexOfAnimalToRemove = this.animals.indexOf(animal);     
+                  this.animals.splice(indexOfAnimalToRemove, 1);
+                  this.animals.unshift(animal);           
               }
      }
    
