@@ -24,7 +24,10 @@
                 <th>Date of birth</th>
             </thead>
             <tbody>
+
                  <tr v-for="(animal, key) in animals" :key="key" v-bind:style="animal.background? styleBackground : ''">                      
+
+                 <tr v-for="(animal, key) in animals" :key="key">                      
                       <td>{{animal.type}}</td>                     
                       <td>{{animal.name}}</td>
                       <td>{{animal.sector.name}}</td>
@@ -56,11 +59,19 @@ export default {
   data() {
       return {
           animals:[
+<<<<<<< HEAD
               {type: "Lion", name: "LionName", birth:"", sector:{}, background:true},
               {type: "Wolf", name: "WolfName", birth:"", sector:{}, background:false},
               {type: "Fox", name: "FoxName", birth: "22-08-2015", sector:{}, background:false},
               {type: "Rabbit", name: "RabbitName", birth: "24-10-2015", sector:{}, background:false},
               {type: "Bear", name: "BearName", birth: "22-09-2016", sector:{}, background:true}
+=======
+              {type: "Lion", name: "LionName", birth:"", sector:{}},
+              {type: "Wolf", name: "WolfName", birth:"", sector:{}},
+              {type: "Fox", name: "FoxName", birth: "22-08-2015", sector:{}},
+              {type: "Rabbit", name: "RabbitName", birth: "24-10-2015", sector:{}},
+              {type: "Bear", name: "BearName", birth: "22-09-2016", sector:{}}
+>>>>>>> 47d01995781e97d1c8f4da8f29a5129def5d0015
           ],
           sectors:[
               {name:"Sector1"},
@@ -72,10 +83,12 @@ export default {
           
           newAnimal: {
               
+
           },
           
           styleBackground: {
                background:'lightgreen',
+
           }
       };
     },
